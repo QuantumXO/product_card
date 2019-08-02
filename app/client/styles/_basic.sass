@@ -1,0 +1,184 @@
+
+@import "./reset"
+@import "./config"
+
+// Fonts
+@font-face
+	font-display: swap
+	font-family: 'Monty'
+	src: url('./fonts/Monty/Webfonts/Monty-Regular.eot')
+	src: local('☺'), url('./fonts/Monty/Webfonts/Monty-Regular.woff') format('woff'),
+	url('./fonts/Monty/Webfonts/Monty-Regular.woff2') format('woff2'),
+	url('./fonts/Monty/TTF/Monty-Regular.ttf') format('truetype')
+	font-weight: 400
+	font-style: normal
+	
+@font-face
+	font-display: swap
+	font-family: 'Monty'
+	src: url('./fonts/Monty/Webfonts/Monty-Bold.eot')
+	src: local('☺'), url('./fonts/Monty/Webfonts/Monty-Bold.woff') format('woff'),
+	url('./fonts/Monty/Webfonts/Monty-Bold.woff2') format('woff2'),
+	url('./fonts/Monty/TTF/Monty-Bold.ttf') format('truetype')
+	font-weight: 700
+	font-style: normal
+
+@font-face
+	font-display: swap
+	font-family: 'Cicero Sans Negrita'
+	src: url('./fonts/CiceroSansNegrita/cicerosansnegrita.eot')
+	src: local('☺'), url('./fonts/CiceroSansNegrita/cicerosansnegrita.woff') format('woff'),
+	url('./fonts/CiceroSansNegrita/cicerosansnegrita.woff2') format('woff2'),
+	url('./fonts/CiceroSansNegrita/cicerosansnegrita.ttf') format('truetype')
+	font-weight: normal
+	font-style: normal
+
+*, *:after, *:before
+	box-sizing: border-box
+
+html, body
+	width: 100%
+	height: 100%
+
+body
+	position: relative
+	min-height: 100vh
+	font-family: $fontDefault
+
+main
+	margin-top: 50px
+	height: 100%
+	display: flex
+	align-items: center
+	justify-content: center
+
+#root
+	width: 100%
+	height: 100%
+
+.container
+	width: 100%
+	height: 100%
+	max-width: 1280px
+	margin: 0 auto
+
+.row
+	padding: 0 15px
+
+.title
+	&--default
+		font-size: em(25)
+		font-weight: 700
+		font-family: $fontAdditional
+
+.rating
+	&--stars
+		margin-top: 10px
+
+		.star
+			font-size: em(10)
+			opacity: .6
+			color: #a2a2a2
+
+			&:not(:first-child)
+				margin-left: 2px
+
+.price
+	&--new
+		font-weight: 700
+		font-size: em(22)
+
+	&--default
+		color: #000000
+		font-weight: 700
+		font-size: em(22)
+
+	&--old
+		margin-left: 5px
+		font-size: em(16)
+		line-height: 22px
+		color: #a8aebb
+		text-decoration: line-through
+
+.btn
+	height: 38px
+	padding: 2px 15px 0
+	display: inline-block
+	text-align: center
+	border: 1px solid #3f3f3f
+	text-transform: uppercase
+	letter-spacing: .3px
+	user-select: none
+	text-decoration: none
+	transition: all .2s ease-in-out
+	font: 500 em(18)/35px $fontDefault
+	cursor: pointer
+
+	&--default
+		color: #ffffff
+		background-color: #3f3f3f
+
+		svg
+			path
+				fill: #fff
+
+		&:hover
+			color: #3f3f3f
+			background-color: #fff
+
+			svg
+				path
+					fill: #3f3f3f
+
+	&--inverse
+		color: #3f3f3f
+		background-color: #fff
+
+		svg
+			path
+				fill: #3f3f3f
+
+		&:hover
+			color: #fff
+			background-color: #3f3f3f
+
+.breadcrumbs
+	margin-top: 20px
+	
+	&__list
+		display: flex
+		align-items: center
+		justify-content: flex-start
+
+	&__item
+		position: relative
+
+		&:not(:first-child)
+			margin-left: 10px
+
+		&:not(:last-child)
+			&:after
+				top: 0
+				right: -13px
+				width: 10px
+				height: 100%
+				content: '/'
+				font-family: Arial, sans-serif
+				display: inline-block
+				position: absolute
+
+	&__link
+		color: #3f3f3f
+		user-select: none
+		text-decoration: none
+		text-transform: capitalize
+
+
+		&.active
+			color: red
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+{
+  "presets": [
+    ["env", {
+      "loose": true
+    }],
+    "react",
+    "stage-2"
+  ],
+  "plugins": [
+    "add-module-exports",
+    "react-hot-loader/babel",
+    "babel-plugin-styled-components"
+  ]
+}

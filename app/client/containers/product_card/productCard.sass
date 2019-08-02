@@ -1,0 +1,147 @@
+
+@import "./../../styles/config"
+
+.product
+	display: flex
+	align-items: flex-start
+	justify-content: space-between
+
+	&__image
+		width: 506px
+		height: auto
+		display: inline-block
+
+		&__wrap
+			padding: 0 15px
+			display: flex
+			align-items: flex-start
+			justify-content: space-between
+
+	&__slide
+		&__list
+			margin-left: 20px
+			display: flex
+			flex-direction: column
+
+		&__item
+			width: 99px
+			height: 110px
+			padding: 2px
+			border: 1px solid transparent
+			transition: .2s ease-in-out
+			cursor: pointer
+
+			&:not(:first-child)
+				margin-top: 20px
+
+			&.active,
+			&:hover
+				border-color: #ff6766
+
+		&__image
+			width: 100%
+			height: 100%
+			display: block
+
+	&__meta
+		flex: 1
+		padding: 0 15px
+		margin-left: 50px
+
+	&__block
+		margin-top: 20px
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+	&__price
+		display: flex
+		align-items: flex-end
+
+	&__description
+		padding-bottom: 10px
+		margin-top: 20px
+		font-size: em(16)
+		line-height: 30px
+		color: #999
+		font-weight: 300
+		font-family: $fontDefault
+		border-bottom: 1px solid #eaeaea
+
+	&__bottom
+		margin-top: 20px
+
+	&__cart
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+		&__counter
+			flex: 1
+			height: 48px
+			min-width: 68px
+			max-width: 120px
+			display: flex
+			margin:	0 auto
+			align-items: center
+			border: 1px solid #eaeaea
+			justify-content: space-between
+
+			.decrement,
+			.increment
+				width: 35px
+				height: 100%
+				user-select: none
+				display: flex
+				align-items: center
+				justify-content: center
+				cursor: pointer
+
+			.decrement
+				border-right: 1px solid #eaeaea
+
+			.increment
+				border-left: 1px solid #eaeaea
+
+		&__btn
+			flex: 1
+			height: 50px
+			margin-left: 40px
+			padding: 1px 15px 0
+			color: #ffffff
+			text-align: center
+			border: 1px solid #3f3f3f
+			text-transform: uppercase
+			background-color: #3f3f3f
+			transition: all .2s ease-in-out
+			font: 700 em(20)/50px $fontDefault
+			cursor: pointer
+
+			&:hover
+				color: #3f3f3f
+				background-color: #fff
+
+	&__wishlist
+		margin-top: 20px
+
+		&__btn
+			padding: 11px 12px 9px
+			display: inline-flex
+			color: #bbbbbb
+			font-weight: 700
+			user-select: none
+			align-items: center
+			justify-content: space-between
+			border: 1px solid #bbbbbb
+			transition: .2s ease-in-out
+			cursor: pointer
+
+			&.active,
+			&:hover
+				color: #3f3f3f
+				border-color: #3f3f3f
+
+		&__title
+			margin-left: 10px
+
+

@@ -1,0 +1,205 @@
+
+@import "./../../styles/config"
+
+.cart
+	height: 100%
+
+	&__table
+		width: 100%
+		max-width: 100%
+		margin-top: 55px
+
+		&__row
+			max-height: 500px
+			transition: .2s ease-in-out
+
+			th
+				padding: 20px 10px
+				color: #333333
+				text-align: center
+				font-weight: 700
+				text-transform: capitalize
+				vertical-align: middle
+				white-space: nowrap
+				border-bottom: 1px solid #e5e5e5
+
+			td
+				padding: 20px 12px
+				font-size: em(14)
+				text-align: center
+				vertical-align: middle
+
+	&__product
+		&__image
+			&__wrap
+				width: 100px
+				display: inline-block
+				
+			&__link
+				text-decoration: none
+				
+		&__title
+			&__inner
+				display: flex
+				align-items: center
+				flex-direction: column
+				justify-content: center
+
+			&__link
+				font-size: em(18)
+				transition: .2s ease-in-out
+
+				&:any-link
+					color: #000
+					text-decoration: none
+
+				&:hover
+					color: #666
+
+			&__additional
+				padding: 5px 0
+				display: inline-block
+				font-size: em(13)
+				font-style: italic
+
+		&__price
+			&__inner
+				display: flex
+				justify-content: center
+				//align-items: flex-end
+
+		&__quantity
+			&__wrap
+				width: 221px
+
+		&__counter
+			flex: 1
+			height: 48px
+			min-width: 68px
+			max-width: 120px
+			margin: 0 auto
+			display: flex
+			align-items: center
+			border: 1px solid #eaeaea
+			justify-content: space-between
+
+			.decrement,
+			.increment
+				width: 35px
+				height: 100%
+				user-select: none
+				display: flex
+				align-items: center
+				justify-content: center
+				transition: .2s ease-in-out
+				cursor: pointer
+				
+				&:hover
+					color: #000
+					background-color: rgba(#eaeaea, .3)
+
+			.decrement
+				border-right: 1px solid #eaeaea
+
+			.increment
+				border-left: 1px solid #eaeaea
+
+		&__total
+			&__wrap
+				width: 179px
+
+		&__remove
+			&__btn
+				padding: 10px
+				display: inline-block
+				transition: .2s ease-in-out
+				cursor: pointer
+
+				svg
+					//
+
+				path
+					fill: #000
+
+				&:hover
+					path
+						fill: #3f3f3f
+
+
+		&__subtotal
+			display: flex
+			align-items: center
+			justify-content: center
+			
+			&__title
+				color: #666
+				font-weight: 300
+				font-size: em(20)
+
+			.price
+				margin-left: 55px
+				//min-width: 150px
+
+	&__footer
+		&__text
+			color: #666
+			font-size: em(17)
+			font-style: italic
+			letter-spacing: .3px
+			padding: 18px 0 20px
+
+		&__union
+			padding: 0 10px
+
+		&__confirm
+			//
+
+	&__empty
+		margin-top: 100px
+		display: flex
+		align-items: center
+		justify-content: center
+		flex-direction: column
+
+		&__text
+			font-size: em(30)
+
+		&__btn
+			width: 184px
+			height: 41px
+			margin-top: 20px
+			padding: 0 16px
+			display: flex
+			align-items: center
+			color: #ffffff
+			border: 1px solid #3f3f3f
+			background-color: #3f3f3f
+			text-decoration: none
+			justify-content: space-between
+			transition: .2s ease-in-out
+			cursor: pointer
+
+			&:hover
+				color: #3f3f3f
+				background-color: #ffffff
+
+				svg
+					margin-right: -4px
+
+					path
+						fill: #3f3f3f
+
+			&__icon
+				margin-left: 5px
+				transition: .2s ease-in-out
+
+				path
+					fill: #fff
+
+
+
+
+
+
+
+
