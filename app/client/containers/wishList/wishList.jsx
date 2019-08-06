@@ -29,8 +29,6 @@ class WishList extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
 
-        console.log('prevProps', prevProps);
-
         /*if(this.props.wishListProps.wishList !== prevProps.wishList) {
             this.setState(() => ({
                 wishList: this.props.wishListProps.wishList || [],

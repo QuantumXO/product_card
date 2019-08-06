@@ -3,24 +3,36 @@ import {HANDLE_WISH_LIST_STATE, REMOVE_ITEM_FROM_WISH_LIST} from "./../constants
 
 import productsList from './../data/productsList.json';
 
-const wishListFromStorage = JSON.parse(localStorage.getItem('wishList')) || null;
+const localStorageState = JSON.parse(localStorage.getItem('state')) || null;
 
-function handleWishListState(wishList) {
+let productsListDefault = productsList,
+    wishListIDsFromStorage = [];
 
+if(localStorageState){
+    productsListDefault = localStorageState.productsListReducer.productsList;
+    wishListIDsFromStorage = localStorageState.wishListReducer.wishListIDsArr;
+}
 
-    wishList = wishList || wishListFromStorage || [];
+function handleWishListState(props) {
+
+    const wishList = props || wishListIDsFromStorage;
 
     const wishListArr = [];
 
+
     wishList.forEach(function (item) {
 
-        const product = productsList.filter(product => product.id == item)[0];
+        const product = productsListDefault.filter(product => product.id == item)[0];
 
         if(product){
             wishListArr.push(product);
         }
 
+        console.log('product: ', product);
+
     });
+
+
 
     return wishListArr;
 }
@@ -28,11 +40,13 @@ function handleWishListState(wishList) {
 const handleWishListStateFunc = handleWishListState();
 
 const initialState = {
-    wishListIDsArr: wishListFromStorage || [],
     wishList: handleWishListStateFunc || [],
+    wishListIDsArr: wishListIDsFromStorage || [],
 };
 
 export default function wishListReducer(state = initialState, action) {
+
+
     switch (action.type){
 
         case HANDLE_WISH_LIST_STATE:
@@ -57,11 +71,7 @@ function removeItem(state, action) {
 
     const IDsArr = newState.wishList.map(item => item.id);
 
-    handleWishListState(IDsArr);
-
-    console.log('removeItem() -> newState: ', newState);
-
-    localStorage.setItem('wishList', JSON.stringify(IDsArr));
+    newState.wishListIDsArr = IDsArr;
 
     return newState;
 }
@@ -72,9 +82,6 @@ function handleWishList(state, action) {
     const existenceStatus = state.wishListIDsArr.indexOf(id);
 
     let newState;
-
-    /*console.log('handleWishList() -> state.wishList: ', state.wishList);
-    console.log('handleWishList() -> existenceStatus: ', existenceStatus);*/
 
     if(existenceStatus != -1){
 
@@ -95,7 +102,9 @@ function handleWishList(state, action) {
         };
     }
 
-    localStorage.setItem('wishList', JSON.stringify(newState.wishListIDsArr));
+    newState.wishList = handleWishListState(newState.wishListIDsArr);
+
+    console.log('handleWishList() -> newState.wishList: ', newState.wishList);
 
     return newState;
 }

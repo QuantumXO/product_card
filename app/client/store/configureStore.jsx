@@ -11,23 +11,31 @@ import { loadLocalStorageState, saveLocalStorageState } from './../helpers/local
 export const history = createBrowserHistory();
 import rootReducer from './../reducers/rootReducer';
 
-const persistedState = loadLocalStorageState();
-const logger = createLogger();
 
 export default function configureStore(preloadedState) {
+
+    const persistedState = loadLocalStorageState();
+    const middlewares = [thunk, routerMiddleware(history)];
+
+    if(process.env.NODE_ENV != 'production'){
+        const logger = createLogger();
+        middlewares.push(logger)
+    }
 
     const store = createStore(
         rootReducer(history),
         persistedState,
-        compose(
+        //compose(
             composeWithDevTools(
-                applyMiddleware(
-                    thunk, logger, routerMiddleware(history), // for dispatching history actions
-                )
+                applyMiddleware(...middlewares)
             )
 
-        )
+        //)
     );
+
+    if(!loadLocalStorageState()){
+        saveLocalStorageState(store.getState());
+    }
 
     store.subscribe(() => {
         saveLocalStorageState(store.getState())

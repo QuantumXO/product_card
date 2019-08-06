@@ -15,18 +15,15 @@ const store = configureStore();
 
 import App from './containers/appContainer';
 
-const render = () => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <HashRouter>
-                <App />
-            </HashRouter>
-        </Provider>,
-        rootEl
-    )
-};
+ReactDOM.render(
+    <Provider store={store}>
+        <HashRouter>
+            <App />
+        </HashRouter>
+    </Provider>,
+    rootEl
+);
 
-render();
 
 if (module.hot) {
     module.hot.accept();

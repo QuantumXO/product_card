@@ -29,7 +29,7 @@ class ProductCard extends Component{
         this.state = {
             productData: this.props.productData || {},
             counterNumber: 1,
-            wishList: this.props.wishList|| [],
+            wishList: this.props.wishList || [],
             mainProductImageIndex: 0,
         };
 
@@ -43,14 +43,12 @@ class ProductCard extends Component{
 
     componentDidUpdate(prevProps, prevState, snapshot) {
 
-        console.log('productCardReducer.jsx -> componentDidUpdate()');
-
-        if (this.props.productData != prevProps.productData) {
+        /*if (this.props.productData != prevProps.productData) {
             this.setState(() => ({
                 productData: this.props.productData,
             }));
 
-        }
+        }*/
         if (this.props.wishList != prevProps.wishList) {
             this.setState(() => ({wishList: this.props.wishList}));
         }
@@ -84,7 +82,7 @@ class ProductCard extends Component{
 
     render(){
         const $this = this;
-        const {id, category, title, price, rating, old_price, images, description, discount} = this.state.productData;
+        const {id, category, title, price, rating, old_price, images, description, discount} = this.props.productData;
         const wishList = this.props.wishList;
         const inWishList = (wishList && wishList.indexOf(id) != -1) ? true : false;
 

@@ -1,5 +1,48 @@
 
+@import "./../../styles/config"
 
 .wishList
 	&__table
 		margin-top: 55px
+
+	&__empty
+		margin-top: 100px
+		display: flex
+		align-items: center
+		justify-content: center
+		flex-direction: column
+
+		&__text
+			font-size: em(30)
+
+		&__btn
+			width: 184px
+			height: 41px
+			margin-top: 20px
+			padding: 0 16px
+			display: flex
+			align-items: center
+			color: #ffffff
+			border: 1px solid #3f3f3f
+			background-color: #3f3f3f
+			text-decoration: none
+			justify-content: space-between
+			transition: .2s ease-in-out
+			cursor: pointer
+
+			&:hover
+				color: #3f3f3f
+				background-color: #ffffff
+
+				svg
+					margin-right: -4px
+
+					path
+						fill: #3f3f3f
+
+			&__icon
+				margin-left: 5px
+				transition: .2s ease-in-out
+
+				path
+					fill: #fff
