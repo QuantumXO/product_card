@@ -29,7 +29,6 @@ function handleCartState(cartList) {
 
 const handleCartStateFunc = handleCartState();
 
-
 const initialState = {
     productsList: productsList,
     inCartList: inCartList || [],

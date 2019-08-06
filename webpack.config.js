@@ -20,7 +20,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: isDevelopment ? '/' : './',
-        filename: 'bundle.js'
+        filename: isDevelopment ? 'bundle.js' : 'bundle.[hash].js',
     },
     cache: true,
     module: {
@@ -135,10 +135,9 @@ module.exports = {
         new HardSourceWebpackPlugin(),
 
         new MiniCssExtractPlugin({
-            filename: 'styles.css',
-            chunkFilename: '[id].css'
+            filename: isDevelopment ? '[name].css' : '[name].[hash].css',
+            chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
         }),
-       /* new ExtractTextPlugin('_header.css'),*/
         new webpack.optimize.OccurrenceOrderPlugin(),
         new HtmlWebpackPlugin({
             template: './app/client/index.html',

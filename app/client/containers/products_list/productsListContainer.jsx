@@ -1,6 +1,6 @@
 'use strict';
 
-import './productsList.sass';
+import './_productsList.sass';
 
 // React
 import React, {Component} from 'react';
@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import Currency from './../../components/default/currency';
-import RatingStars from './../../components/default/ratingStars';
+import RatingStars from '../../components/default/rating/ratingStars';
 import LinkWrap from './../../components/default/LinkWrap';
 import * as cartAction from "../../actions/cart/cartAction";
 

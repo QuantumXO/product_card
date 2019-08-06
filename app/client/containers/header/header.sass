@@ -19,6 +19,49 @@ header
 		&:any-link
 			color: #000
 
+	&__menu
+		display: inline-flex
+
+		&__item
+			padding: 0 10px
+			display: inline-flex
+			align-items: center
+			justify-content: center
+			border: 1px solid transparent
+
+			&:not(:last-child)
+				border-right-color: #eaeaea
+
+		&__link
+			text-decoration: none
+			transition: .2s ease-in-out
+
+			&:any-link
+				color: #000
+
+			&.inverse
+				&:any-link
+					color: $colorLinkHoverDefault
+
+				&:hover
+					color: #000000
+
+	&__wishList
+		display: inline-flex
+		align-items: center
+		justify-content: center
+
+		&:hover
+			color: #000
+
+		&__icon
+			font-size: em(22)
+			animation: scaleAnimation 1s infinite alternate
+
+		&__title
+			padding-left: 9px
+			font-size: em(16)
+
 	&__cart
 		position: relative
 		padding-right: 20px
@@ -29,10 +72,10 @@ header
 
 		&:hover
 			svg
-				fill: #a8aebb
+				fill: $colorLinkHoverDefault
 				
 			.header__cart__counter
-				background-color: #a8aebb
+				background-color: $colorLinkHoverDefault
 				
 		&__icon
 			transition: .2s ease-in-out

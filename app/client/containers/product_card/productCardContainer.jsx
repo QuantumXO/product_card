@@ -1,6 +1,6 @@
 'use strict';
 
-import './productCard.sass';
+import './_productCard.sass';
 
 // React
 import React, {Component} from 'react';
@@ -11,9 +11,10 @@ import {connect} from 'react-redux';
 
 import * as productCardAction from './../../actions/productCard/productCardAction';
 import * as cartAction from './../../actions/cart/cartAction';
+import * as wishListAction from './../../actions/wishList/wishListAction';
 
 import Currency from './../../components/default/currency';
-import RatingStars from "./../../components/default/ratingStars";
+import RatingStars from "../../components/default/rating/ratingStars";
 import LinkWrap from './../../components/default/LinkWrap';
 import Breadcrumbs from './../../components/default/breadcrumbs/breadcrumbs';
 
@@ -28,7 +29,7 @@ class ProductCard extends Component{
         this.state = {
             productData: this.props.productData || {},
             counterNumber: 1,
-            wishList: [],
+            wishList: this.props.wishList|| [],
             mainProductImageIndex: 0,
         };
 
@@ -42,20 +43,22 @@ class ProductCard extends Component{
 
     componentDidUpdate(prevProps, prevState, snapshot) {
 
-        if (this.props.productData !== prevProps.productData) {
+        console.log('productCardReducer.jsx -> componentDidUpdate()');
+
+        if (this.props.productData != prevProps.productData) {
             this.setState(() => ({
                 productData: this.props.productData,
             }));
 
         }
-        if (this.props.wishList !== prevProps.wishList) {
+        if (this.props.wishList != prevProps.wishList) {
             this.setState(() => ({wishList: this.props.wishList}));
         }
 
     }
 
     handleWishList(){
-        this.props.productCardAction.handleWishListState(this.props.productData.id);
+        this.props.wishListAction.handleWishList(this.props.productData.id);
     }
 
     decrementCounter(){
@@ -80,7 +83,6 @@ class ProductCard extends Component{
     }
 
     render(){
-
         const $this = this;
         const {id, category, title, price, rating, old_price, images, description, discount} = this.state.productData;
         const wishList = this.props.wishList;
@@ -101,7 +103,7 @@ class ProductCard extends Component{
                         data-image-index={index}
                         onClick={handleSlideFunc}
                     >
-                        <img src={item} alt="" className="product__slide__image" />
+                        <img src={item} alt={title} className="product__slide__image" />
                     </li>
                 );
 
@@ -184,12 +186,13 @@ class ProductCard extends Component{
 
 const mapStateToProps = (state) => ({
     productData: state.productCardReducer.productData,
-    wishList: state.productCardReducer.wishList,
+    wishList: state.wishListReducer.wishListIDsArr,
     basicProps: state.defaultReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
     productCardAction: bindActionCreators(productCardAction, dispatch),
+    wishListAction: bindActionCreators(wishListAction, dispatch),
     cartAction: bindActionCreators(cartAction, dispatch),
 });
 

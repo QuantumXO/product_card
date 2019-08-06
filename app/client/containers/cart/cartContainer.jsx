@@ -1,6 +1,6 @@
 'use strict';
 
-import './cart.sass';
+import './_cart.sass';
 
 // React
 import React, {PureComponent} from 'react'
@@ -13,7 +13,7 @@ import * as cartAction from './../../actions/cart/cartAction';
 
 import Breadcrumbs from './../../components/default/breadcrumbs/breadcrumbs';
 import Currency from './../../components/default/currency';
-import RatingStars from "./../../components/default/ratingStars";
+import RatingStars from "../../components/default/rating/ratingStars";
 import LinkWrap from './../../components/default/LinkWrap';
 
 class Cart extends PureComponent{
@@ -107,8 +107,8 @@ class Cart extends PureComponent{
                                     title={title}
                                 />
                                 <span className="cart__product__title__additional">
-                            Color: red
-                        </span>
+                                    Color: red
+                                </span>
                             </div>
                         </td>
                         <td className="cart__product__price__wrap">

@@ -6,18 +6,19 @@ import { createBrowserHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
+import { loadLocalStorageState, saveLocalStorageState } from './../helpers/localStorageState';
 
 export const history = createBrowserHistory();
 import rootReducer from './../reducers/rootReducer';
 
+const persistedState = loadLocalStorageState();
 const logger = createLogger();
 
 export default function configureStore(preloadedState) {
 
     const store = createStore(
         rootReducer(history),
-        preloadedState,
+        persistedState,
         compose(
             composeWithDevTools(
                 applyMiddleware(
@@ -27,6 +28,10 @@ export default function configureStore(preloadedState) {
 
         )
     );
+
+    store.subscribe(() => {
+        saveLocalStorageState(store.getState())
+    });
 
     return store;
 }

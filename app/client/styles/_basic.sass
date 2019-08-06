@@ -52,6 +52,16 @@ main
 	align-items: center
 	justify-content: center
 
+a
+	text-decoration: none
+
+	&:any-link
+		//color: #000000
+
+	&:hover
+		color: $colorLinkHoverDefault
+
+
 #root
 	width: 100%
 	height: 100%
@@ -105,7 +115,7 @@ main
 	padding: 2px 15px 0
 	display: inline-block
 	text-align: center
-	border: 1px solid #3f3f3f
+	border: 1px solid transparent
 	text-transform: uppercase
 	letter-spacing: .3px
 	user-select: none
@@ -116,6 +126,7 @@ main
 
 	&--default
 		color: #ffffff
+		border-color: #3f3f3f
 		background-color: #3f3f3f
 
 		svg
@@ -132,6 +143,7 @@ main
 
 	&--inverse
 		color: #3f3f3f
+		border-color: #3f3f3f
 		background-color: #fff
 
 		svg
@@ -141,6 +153,13 @@ main
 		&:hover
 			color: #fff
 			background-color: #3f3f3f
+
+	&--remove
+		&:hover
+			svg
+				path
+					fill: #3f3f3f
+
 
 .breadcrumbs
 	margin-top: 20px
@@ -173,10 +192,15 @@ main
 		text-decoration: none
 		text-transform: capitalize
 
-
 		&.active
 			color: red
 
+@keyframes scaleAnimation
+	0%
+		transform: scale(1.0)
+
+	100%
+		transform: scale(1.1)
 
 
 

@@ -9,12 +9,6 @@ export function getProductData(id) {
     }
 }
 
-export function handleWishListState(id) {
-    return {
-        type: HANDLE_WISH_LIST_STATE,
-        id
-    }
-}
 
 
 

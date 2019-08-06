@@ -9,6 +9,7 @@ import { Switch, Route } from 'react-router-dom';
 import ProductsList from './../containers/products_list/productsListContainer';
 import ProductCard from './../containers/product_card/productCardContainer';
 import Cart from './../containers/cart/cartContainer';
+import WishList from './../containers/wishList/wishList';
 
 const Routes = () => {
     return(
@@ -16,6 +17,7 @@ const Routes = () => {
             <Route exact path='/' component={ProductsList} />
             <Route path='/product/:id' component={ProductCard} />
             <Route path='/cart' component={Cart} />
+            <Route path='/wish-list' component={WishList} />
             {/*<Route path='/admin' component={Admin} />*/}
         </Switch>
     )
