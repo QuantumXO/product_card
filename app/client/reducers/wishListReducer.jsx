@@ -19,7 +19,6 @@ function handleWishListState(props) {
 
     const wishListArr = [];
 
-
     wishList.forEach(function (item) {
 
         const product = productsListDefault.filter(product => product.id == item)[0];
@@ -28,12 +27,8 @@ function handleWishListState(props) {
             wishListArr.push(product);
         }
 
-        console.log('product: ', product);
-
     });
-
-
-
+    
     return wishListArr;
 }
 
@@ -85,16 +80,12 @@ function handleWishList(state, action) {
 
     if(existenceStatus != -1){
 
-        console.log('EXIST: ', state.wishListIDsArr);
-
         newState = {
             ...state,
             wishListIDsArr: [...state.wishListIDsArr.filter(item => item !== id)],
         };
 
     }else {
-
-        console.log('NOT exist: ', state.wishListIDsArr);
 
         newState = {
             ...state,
@@ -103,8 +94,6 @@ function handleWishList(state, action) {
     }
 
     newState.wishList = handleWishListState(newState.wishListIDsArr);
-
-    console.log('handleWishList() -> newState.wishList: ', newState.wishList);
 
     return newState;
 }
