@@ -106,6 +106,7 @@ const mapDispatchToProps = (dispatch) => ({
     wishListAction: bindActionCreators(wishListAction, dispatch),
 });
 
+
 export default connect(mapStateToProps, mapDispatchToProps)(WishList)
 
 

@@ -117,8 +117,6 @@ function handleQuantity(state, action){
 
     newState.cartProductsList = handleCartState(newState.inCartList);
 
-    console.log('handleQuantity() -> newState: ',  newState);
-
     localStorage.setItem('inCartList', JSON.stringify(newState.inCartList));
 
     return newState;

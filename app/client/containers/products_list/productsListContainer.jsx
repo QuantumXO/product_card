@@ -13,9 +13,8 @@ import {connect} from 'react-redux';
 import Currency from './../../components/default/currency';
 import RatingStars from '../../components/default/rating/ratingStars';
 import LinkWrap from './../../components/default/LinkWrap';
-import * as cartAction from "../../actions/cart/cartAction";
 
-import Breadcrumbs from './../../components/default/breadcrumbs/breadcrumbs';
+import * as cartAction from "../../actions/cart/cartAction";
 
 const bucket =
     (
@@ -40,53 +39,52 @@ class ProductsList extends Component{
     render(){
 
         const productsList = this.props.productsListProps.productsList.map(item =>
-        {
-            const oldPrice = item.old_price ?
-                (
-                    <div className="price--old">
-                        <Currency currency={this.props.basicProps.currency} />
-                        <span className="value">{item.old_price}</span>
-                    </div>
-                ) : '';
-
-            const discount = item.discount > 0 ?
-                (
-                    <span className="products__item__discount">-{item.discount} %</span>
-                ) : '';
-
-            return (
-                <li key={item.id} className="products__item">
-                    <div className="products__item__header">
-                        {discount}
-                        <img src={item.images[0]} className="products__item__image" alt={item.title} />
-                        <span className="products__item__cart" onClick={this.addToCart.bind(this, item.id)}>{bucket}</span>
-
-                    </div>
-                    <div className="products__item__footer">
-                        <LinkWrap
-                            url={'product/' + item.id}
-                            classList="products__item__title"
-                            title={item.title}
-                        />
-                        <div className="products__item__price">
-                            <div className={item.discount > 0 ? "price--new" : "price--default"}>
-                                <Currency currency={this.props.basicProps.currency} />
-                                <span className="value">{item.price}</span>
-                            </div>
-                            {oldPrice}
+            {
+                const oldPrice = item.old_price ?
+                    (
+                        <div className="price--old">
+                            <Currency currency={this.props.basicProps.currency} />
+                            <span className="value">{item.old_price}</span>
                         </div>
-                        <RatingStars rating={item.rating} />
-                    </div>
-                </li>
-            )
-        });
+                    ) : null;
+
+                const discount = item.discount > 0 ?
+                    (
+                        <span className="products__item__discount">-{item.discount} %</span>
+                    ) : null;
+
+                return (
+                    <li key={item.id} className="products__item">
+                        <div className="products__item__header">
+                            {discount}
+                            <img src={item.images[0]} className="products__item__image" alt={item.title} />
+                            <span className="products__item__cart" onClick={this.addToCart.bind(this, item.id)}>{bucket}</span>
+
+                        </div>
+                        <div className="products__item__footer">
+                            <LinkWrap
+                                url={'product/' + item.id}
+                                classList="products__item__title"
+                                title={item.title}
+                            />
+                            <div className="products__item__price">
+                                <div className={item.discount > 0 ? "price--new" : "price--default"}>
+                                    <Currency currency={this.props.basicProps.currency} />
+                                    <span className="value">{item.price}</span>
+                                </div>
+                                {oldPrice}
+                            </div>
+                            <RatingStars rating={item.rating} />
+                        </div>
+                    </li>
+                )
+            });
 
         return(
             <React.Fragment>
                 <Helmet>
                     <title>Products list</title>
                 </Helmet>
-                {/*<Breadcrumbs data={''} />*/}
                 <main>
                     <div className="container">
                         <div className="row">
@@ -103,7 +101,6 @@ class ProductsList extends Component{
         )
     }
 }
-
 
 const mapStateToProps = (state) => ({
     productsListProps: state.productsListReducer,

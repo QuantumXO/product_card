@@ -75,9 +75,7 @@ class Table extends Component {
                                 classList="table__title__link"
                                 title={title}
                             />
-                            {/*<span className="table__sbt">
-                                Color: red
-                            </span>*/}
+                            <RatingStars rating={rating} />
                         </div>
                     </td>
                     <td className="table__col">
