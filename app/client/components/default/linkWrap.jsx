@@ -9,7 +9,7 @@ export default function LinkWrap(props) {
 
         const {id, url, classList, title, dataAttr, target, children, keyIndex} = props;
 
-        const urlPrefix = process.env.NODE_ENV === 'development' ? '/#/' : '//quantumxo.github.io/product_cart/dist/#/';
+        const urlPrefix = process.env.NODE_ENV === 'development' ? '/#/' : '//quantumxo.github.io/react-product-cart/dist/#/';
 
         const elType = url !== false ? 'a' : 'span';
 
